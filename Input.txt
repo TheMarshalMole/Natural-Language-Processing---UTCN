@@ -1,0 +1,9 @@
+{
+    "actiune" : "adaugaEvent",
+    "parametrii" : {
+        "popozitie" : "@[event] pe la @[rD] @[aD] intre",
+        "event" : "323, 32",
+        "rD:" : "val",
+        "aD" : "Cluj"
+    }
+}

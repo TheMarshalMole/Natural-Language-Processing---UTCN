@@ -1,0 +1,21 @@
+{
+    "adaugaEvent" : {
+        "@[event]" : {
+            "pe" : {
+                "@[data]" : {
+                    "intre" : "intre",
+                    "_isFinal" : "false"
+                }
+            },
+            "_canAbsent" : "true"
+        }
+    },
+    "intre" : {
+        "@[ora]" :{
+            "si" : {
+                "@[ora]" : null
+            },
+            "_default" : "3h"
+        }
+    }
+}
