@@ -1,9 +1,9 @@
 {
     "actiune" : "adaugaEvent",
     "parametrii" : {
-        "popozitie" : "@[event] pe la @[rD] @[aD] intre",
-        "event" : "323, 32",
-        "rD:" : "val",
-        "aD" : "Cluj"
+        "propozitie" : "@[event] pe @[data] intre @[ora_inceput] si @[ora_final]",
+        "@[event]" : "mergem la cumparaturi",
+        "@[data]" : "07.05.2020",
+        "@[ora_inceput]:" : "20:00"
     }
 }
