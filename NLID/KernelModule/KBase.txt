@@ -15,7 +15,7 @@
             "_canAbsent" : "true",
             "si" : {
                 "@[ora_final]" : {
-                    "_default" : "3h",
+                    "_default" : "_d20:00",
                     "_isFinal" : "true"
                 }
             }

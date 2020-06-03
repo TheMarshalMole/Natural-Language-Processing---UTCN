@@ -23,7 +23,6 @@ completeDictionary(
         -> OutDictionary = InDictionary
     ; % continuam cu restul conditiilor
 
-
     % obtinem atomul pentru cuvant
     atom_string(AtomKey, Key), 
 
@@ -119,7 +118,7 @@ readJson(InputFile, JSData) :-
 
 % entryPoint
 entryPoint(OutputDict) :-
-    readJson("./Input.txt", JSData), % citi
-    readJson("./KBase.txt", JSDataKB),
+    readJson("./NLID/KernelModule/Input.txt", JSData), % citi
+    readJson("./NLID/KernelModule/KBase.txt", JSDataKB),
     analyseData(JSData, JSDataKB, OutputDict) % obtinem actiunea
 .
