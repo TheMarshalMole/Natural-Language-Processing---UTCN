@@ -1,6 +1,9 @@
 % sintaxa:
 % @ - variabila
 
+% ERROR CODES
+% ERROR_001 - Premature Ending
+
 % functii generice generate
 % @arguments: Find is atom
 getFirstLetter(Value, Find) :- 
@@ -47,22 +50,39 @@ unificareTermeni(
     \+ string(JSDataKB),
     get_dict('_isFinal', JSDataKB, _),
 
+    % generam dictionarul cu rezultatele
+    dict_create(OutputDict, _, []),
+    ! % oprim recursivitatea, am gasit solutia
+.
+
+% s-a terminat input-ul
+unificareTermeni(
+    [HProp], % parcurgerea popozitiei
+    _, % knowledge base-ul
+    _, % json-ul citit la input
+    OutputDict % dictionarul final cu rezultatele
+) :-
+    % verificam daca este un singur cuvant
+    string(HProp),
+    
     % generam un dictionar
-    dict_create(OutputDict, _, [])
+    dict_create(TempDict, _, []),
+    put_dict('@[ERROR_001]', TempDict, HProp, OutputDict),
+    ! % oprim recursivitatea
 .
 
 unificareTermeni(
     [HProp|TProp],  % parcurgerea popozitiei
     [JSDataKBOriginal | JSDataKB],  % knowledge base-ul
-    JSDataInput,    % json-ul citit la input
-    OutDictionary    % dictionarul final cu rezultatele
+    JSDataInput,  % json-ul citit la input
+    OutDictionary  % dictionarul final cu rezultatele
 ) :- 
     % scoatem datele din dictionar
     atom_string(Atom, HProp), get_dict(Atom, JSDataKB, Termen), % scoatem termenii din dictionar
     
     % daca nu este sub-arbore, incepem din root
     string(Termen),
-    !,
+    !, % oprire recursivitate
 
     % scoatem din root primul termen
     atom_string(RootAtom, Termen),
@@ -83,7 +103,7 @@ unificareTermeni(
     
     % mergem pe ramura aceasta
     unificareTermeni(TProp, [JSDataKBOriginal | Termen], JSDataInput, InDictionary),
-   
+
     % verificam daca este variabila
     % incepe cu @[cuvant]
     completeDictionary(HProp, JSDataKB, JSDataInput, InDictionary, OutDictionary)

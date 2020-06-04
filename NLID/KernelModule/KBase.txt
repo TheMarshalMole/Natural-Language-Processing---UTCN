@@ -18,6 +18,12 @@
                     "_default" : "_d20:00",
                     "_isFinal" : "true"
                 }
+            },
+            "pe" : {
+                "@[ora_final]" : {
+                    "_default" : "_d20:00",
+                    "_isFinal" : "true"
+                }
             }
         },
         "@[data_inceput]" :{

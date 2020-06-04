@@ -1,7 +1,7 @@
 {
     "actiune" : "adaugaEvent",
     "parametrii" : {
-        "propozitie" : "@[event] pe @[data] intre @[ora_inceput] si @[ora_final]",
+        "propozitie" : "@[event] pe @[data] intre @[ora_inceput] si",
         "@[event]" : "mergem la cumparaturi",
         "@[data]" : "07.05.2020",
         "@[ora_inceput]:" : "20:00"

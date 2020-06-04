@@ -7,4 +7,5 @@ def start():
 
     isValid = checkValues(result)
     # restragem rezultatele
-    print(isValid)
+    print("Primite: ", str(result))
+    print("Posibila intrebare: ", str(isValid))
