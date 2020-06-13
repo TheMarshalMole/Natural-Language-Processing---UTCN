@@ -3,36 +3,35 @@
         "@[event]" : {
             "pe" : {
                 "_canAbsent" : "true",
-                "@[data]" : {
-                    "intre" : "intre"
-                }
-            },
+                "@[data]" : "@[data]"
+            }
         }
     },
-    "intre" : {
-        "@[ora_inceput]" :{
-            "_default" : "3h",
-            "_canAbsent" : "true",
-            "si" : {
-                "@[ora_final]" : {
-                    "_default" : "_d20:00",
-                    "_isFinal" : "true"
-                }
-            },
-            "pe" : {
-                "@[ora_final]" : {
-                    "_default" : "_d20:00",
-                    "_isFinal" : "true"
+    "intreabaEvent" : {
+        "@[data]" : {
+            "_isFinal" : "true",
+            "la" : "la",
+            "intre" : "intre"
+        }
+    },
+    "@[data]" : {
+        "_isFinal" : "true",
+        "intre" : {
+            "@[ora_inceput]" :{
+                "_default" : "3h",
+                "si" : {
+                    "@[ora_final]" : {
+                        "_default" : "_d20:00",
+                        "_isFinal" : "true"
+                    }
                 }
             }
         },
-        "@[data_inceput]" :{
+        "la" : {
             "_canAbsent" : "true",
-            "si" : {
-                "@[ora_final]" : {
-                    "_default" : "20:00",
-                    "_isFinal" : "true"
-                }
+            "@[ora_inceput]" : {
+                "_default" : "_8:30",
+                "_isFinal" : "true"
             }
         }
     }
