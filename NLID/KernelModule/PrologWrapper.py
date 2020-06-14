@@ -30,7 +30,7 @@ class PrologWrapper():
             # add error value
             if keys[i].startswith("ERROR_"):
                 dictResult[keys[i]] = "{}/{}".format(ERROR_CODES[keys[i]], values[i][1:])
-            dictResult[keys[i]] = values[i][1:]
+            dictResult[keys[i]] = values[i][1:-1]
 
         return dictResult
     

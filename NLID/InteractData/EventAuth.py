@@ -4,7 +4,8 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-SCOPES = ['https://www.googleapis.com/auth/documents.readonly']
+
+SCOPES = ['https://www.googleapis.com/auth/calendar.events']
 
 class EventAuth:
     def __init__(self):
@@ -29,3 +30,7 @@ class EventAuth:
                     'credentials.json', SCOPES)
                 creds = flow.run_local_server(port=0)
 
+        self.__service = build('calendar', 'v3', credentials=creds)
+    
+    def getService(self):
+        return self.__service

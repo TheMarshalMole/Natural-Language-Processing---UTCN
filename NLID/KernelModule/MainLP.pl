@@ -32,7 +32,7 @@ completeDictionary(
     % incercam sa luam datele din input
     get_dict(AtomKey, JSInput, Termen) 
         -> put_dict(AtomKey, InDictionary, Termen, OutDictionary);
-    
+
     % incercam sa luam datele din input
     atom_string(AtomKey, Key), 
 
@@ -90,6 +90,40 @@ unificareTermeni(
     ! % oprim recursivitatea
 .
 
+% am ajuns la final
+unificareTermeni(
+    _,  % parcurgerea popozitiei
+    [_ | JSDataKB],   % knowledge base-ul
+    _,    % json-ul citit la input
+    OutputDict     % dictionarul final cu rezultatele
+) :- 
+    % check if it is final
+    \+ string(JSDataKB),
+    get_dict('_isFinal', JSDataKB, _),
+    !, % oprim recursivitatea
+
+    % generam dictionarul cu rezultatele
+    dict_create(OutputDict, _, [])
+.
+
+% s-a terminat prematur propozitia
+unificareTermeni(
+    [],  % parcurgerea popozitiei
+    [_ | JSDataKB],   % knowledge base-ul
+    _,   % json-ul citit la input
+    OutputDict     % dictionarul final cu rezultatele
+) :- 
+    % check if it ended prematurely
+    \+ string(JSDataKB),
+    \+ get_dict('_isFinal', JSDataKB, _),
+    print(JSDataKB),
+    !, % oprim recursivitatea
+    dict_create(Temp, _, []),
+    put_dict('@[ERROR_001]', Temp, "PrematurEnding", OutputDict),
+
+    print("Propozitie")
+.
+
 % termenul lipseste din KBase
 % verificam toti termenii sa vedem daca este prezent _canAbsent
 unificareTermeni(
@@ -107,22 +141,6 @@ unificareTermeni(
     % are flag-ul de _canAbsent
     get_dict('_canAbsent', UnKBranch, _),
     unificareTermeni(ListTerms, [JSDataKBOriginal | UnKBranch], JSDataInput, OutDictionary)
-.
-
-% am ajuns la final
-unificareTermeni(
-    _,  % parcurgerea popozitiei
-    [_ | JSDataKB],   % knowledge base-ul
-    _,    % json-ul citit la input
-    OutputDict     % dictionarul final cu rezultatele
-) :- 
-    % check if it is final
-    \+ string(JSDataKB),
-    get_dict('_isFinal', JSDataKB, _),
-    !, % oprim recursivitatea
-
-    % generam dictionarul cu rezultatele
-    dict_create(OutputDict, _, [])
 .
 
 % analizam json-ul primit

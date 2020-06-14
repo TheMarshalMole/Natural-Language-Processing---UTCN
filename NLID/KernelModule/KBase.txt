@@ -8,17 +8,13 @@
         }
     },
     "intreabaEvent" : {
-        "@[data]" : {
-            "_isFinal" : "true",
-            "la" : "la",
-            "intre" : "intre"
-        }
+        "@[data]" : "@[data]"
     },
     "@[data]" : {
         "_isFinal" : "true",
         "intre" : {
             "@[ora_inceput]" :{
-                "_default" : "3h",
+                "_default" : "_d21:00",
                 "si" : {
                     "@[ora_final]" : {
                         "_default" : "_d20:00",
@@ -30,7 +26,7 @@
         "la" : {
             "_canAbsent" : "true",
             "@[ora_inceput]" : {
-                "_default" : "_8:30",
+                "_default" : "_d8:30",
                 "_isFinal" : "true"
             }
         }
