@@ -11,8 +11,8 @@ INPUT_PATH = './NLID/KernelModule/Input.txt'
 
 def start():
     # adaugam date to google API
-    gAPI = EventAuth()
-    serviceAPI = gAPI.getService()
+    # gAPI = EventAuth()
+    # serviceAPI = gAPI.getService()
 
     while(True):
         # copiem fisierul de input pentru kernel
@@ -28,19 +28,30 @@ def start():
 
         # prolog processing
         adProlog = PrologWrapper()
-        result = adProlog.interact()
+        try:
+            result = adProlog.interact()
+        except:
+            result = None
 
-        # obtinem match-ul de la prolog
-        isValid = checkValues(result)
-
+        # verificam validitatea
         checkResult = validateAgInput(fDir, result)
         
-        print("Primite: ", str(result))
+        print()
         if checkResult is not True:
             # se cere reformularea propozitiei de la cuvantul malformat incolo
+            print("Primite: ", str(result))
             print("Posibila intrebare: ", str(checkResult))
         else:
-            # restragem rezultatele
+            # obtinem match-ul de la prolog
+            isValid = checkValues(result)
+
+            # scoatem flag-urile din dictionar
+            for i in result.keys():
+                if result[i].startswith("_d"):
+                    result[i] = result[i][2:]
+
+            # afisam datele
+            print("Primite: ", str(result))
             print("Posibila intrebare: ", str(isValid))
 
             # asteptam dupa input

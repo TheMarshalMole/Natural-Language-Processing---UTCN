@@ -119,7 +119,7 @@ unificareTermeni(
     print(JSDataKB),
     !, % oprim recursivitatea
     dict_create(Temp, _, []),
-    put_dict('@[ERROR_001]', Temp, "PrematurEnding", OutputDict),
+    put_dict('@[ERROR_001]', Temp, "PrematureEnding", OutputDict),
 
     print("Propozitie")
 .

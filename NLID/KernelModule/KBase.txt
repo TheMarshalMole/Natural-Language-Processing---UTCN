@@ -1,4 +1,38 @@
 {
+    "intreabaVremea" : {
+        "@[loc]": {
+            "_isFinal": "true",
+            "_default": "Baia Mare",
+            "@[timp]": {
+                "_isFinal" : "true"
+            }
+        },
+        "@[timp]": {
+            "_isFinal" : "true"
+        }
+    },
+    "aprindeLumina" : {
+        "in": {
+            "_canAbsent" : "true",
+            "@[loc]": {
+                "_isFinal" : "true"
+            }
+        }
+    },
+    "seteazaTemperatura" : {
+        "la" : {
+            "_canAbsent": "true",
+            "@[grade]": {
+                "_default": "25",
+                "in": {
+                    "_canAbsent": "true",
+                    "@[loc]": {
+                        "_isFinal": "true"
+                    }
+                }
+            }
+        }
+    },
     "adaugaEvent" : {
         "@[event]" : {
             "pe" : {
@@ -12,6 +46,7 @@
     },
     "@[data]" : {
         "_isFinal" : "true",
+        "_default" : "_d1998-07-22",
         "intre" : {
             "@[ora_inceput]" :{
                 "_default" : "_d21:00",

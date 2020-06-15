@@ -28,6 +28,10 @@ def checkValues(dictInput):
 def validateAgInput(inputData, outputData):
     propozitie = inputData['parametrii']['propozitie']
 
+    # nu s-au obtinut datele
+    if outputData is None:
+        return "REFORMULARE [ALL]"
+
     # parsam input-ul
     inputKeys = re.findall(r"@\[[A-Za-z0-9_]+\]", propozitie)
 
@@ -37,9 +41,15 @@ def validateAgInput(inputData, outputData):
             return "REFORMULARE [ALL]"
 
     # verificam daca input-ul este egal cu dictionarul din prolog
+    oldValue = None
     for value in inputKeys:
         value = value[2:-1]
+
         if value not in outputData.keys():
-            return "REFORMULATE [{}]".format(value)
+            if oldValue == None:
+                return "REFORMULARE [ALL]"
+
+            return "REFORMULARE [{}]".format(oldValue)
+        oldValue = value
 
     return True

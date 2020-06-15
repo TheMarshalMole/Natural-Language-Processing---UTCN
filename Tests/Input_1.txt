@@ -1,5 +1,5 @@
 {
-    "actiune" : "seteazaTemperatura",
+    "actiune" : "adaugaEvent",
     "parametrii" : {
         "propozitie" : "@[event] pe @[data] intre @[ora_inceput] si @[ora_final] ",
         "@[event]" : "mergem la cumparaturi",
