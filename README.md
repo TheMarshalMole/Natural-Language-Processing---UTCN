@@ -1,3 +1,5 @@
+# This project is CLOSED.
+
 # Natural Language Intent Detection
 
 Def: NLID este o soluție care să asocieze propoziția primită la intrare cu toate posibilitățile din setul cunoscut 
